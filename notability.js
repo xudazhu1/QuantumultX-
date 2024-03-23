@@ -1,19 +1,16 @@
-/***
- * notability解锁plus，如果解锁无效果，点击恢复计划
- * 公众号：木瞳科技Pro
- *
- * [MITM]
- * hostname = notability.com
+/*************************************
 
+项目名称：**********
+author：xdz1
+
+**************************************
 [rewrite_local]
 https://notability.com/global url script-response-body https://raw.githubusercontent.com/xudazhu1/QuantumultX-/main/notability.js
 
 [mitm]
 hostname = notability.com
 
-
- ****/
-
+*************************************/
 
 
 const SCRIPT_NAME = 'Notability';
