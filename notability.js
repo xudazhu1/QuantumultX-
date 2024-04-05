@@ -5,7 +5,7 @@ author：xdz1
 
 **************************************
 [rewrite_local]
-https://notability.com/global url script-response-body https://raw.githubusercontent.com/xudazhu1/QuantumultX-/main/notability.js
+^https?:\/\/notability\.com\/(global|subscriptions) url script-response-body https://raw.githubusercontent.com/xudazhu1/QuantumultX-/main/notability.js
 
 [mitm]
 hostname = notability.com
