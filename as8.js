@@ -96,35 +96,6 @@ if (sync.test($request.url)) {
     } else if (res && res["body"]) {
         let body = res
         // console.log("body 之前 ===" +  JSON.stringify(body))
-        let added = {
-            "subscriptions": {
-                "com.goodnotes.gn6_one_time_unlock_3999": {
-                    "Author": "chxm1023",
-                    "store": "app_store",
-                    "ownership_type": "PURCHASED",
-                    "warning": "仅供学习，禁止转载或售卖",
-                    "original_purchase_date": "2022-09-09T09:09:09Z",
-                    "Telegram": "https://t.me/chxm1023",
-                    "purchase_date": "2022-09-09T09:09:09Z"
-                }
-            },
-            "entitlements": {
-                "apple_access": {
-                    "Telegram": "https://t.me/chxm1023",
-                    "warning": "仅供学习，禁止转载或售卖",
-                    "purchase_date": "2022-09-09T09:09:09Z",
-                    "product_identifier": "com.goodnotes.gn6_one_time_unlock_3999",
-                    "Author": "chxm1023"
-                },
-                "crossplatform_access": {
-                    "Telegram": "https://t.me/chxm1023",
-                    "warning": "仅供学习，禁止转载或售卖",
-                    "purchase_date": "2022-09-09T09:09:09Z",
-                    "product_identifier": "com.goodnotes.gn6_one_time_unlock_3999",
-                    "Author": "chxm1023"
-                }
-            },
-        }
 
         // 修改积分 credits_sync
         // body["body"]["credits_sync"]["body"]["credits_spent"] = -1
