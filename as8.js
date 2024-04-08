@@ -5,9 +5,9 @@ author：xdz1
 
 **************************************
 [rewrite_local]
-^https:([\S\s]*?)gameloft.com/scripts/general/sync_all.php url script-response-body http://192.168.8.229:8088/as8.js
-^https://iap-eur.gameloft.com/inapp_crm/index.php url script-response-body http://192.168.8.229:8088/as8.js
-#! ^https:([\S\s]*?)gameloft.com/authorize url script-request-body http://192.168.8.229:8088/as8.js
+^https:([\S\s]*?)gameloft.com/scripts/general/sync_all.php url script-response-body https://raw.githubusercontent.com/xudazhu1/QuantumultX-/main/as8.js
+^https://iap-eur.gameloft.com/inapp_crm/index.php url script-response-body https://raw.githubusercontent.com/xudazhu1/QuantumultX-/main/as8.js
+#! ^https:([\S\s]*?)gameloft.com/authorize url script-request-body https://raw.githubusercontent.com/xudazhu1/QuantumultX-/main/as8.js
 #! 下面是去广告
 ^https:([\S\s]*?)unityads.unity3d.com url reject
 ^https://a4.applovin.com/4.0/ad url reject
