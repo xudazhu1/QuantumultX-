@@ -73,10 +73,10 @@ const authorize = /^https:([\S\s]*?)gameloft.com\/authorize/;
 if (authorize.test($request.url)) {
 	
     let regex = /username([\S\s]+?)[\&]/;
-    let body = $request.body.replace(regex, "username=anonymous%3AdjNfMTcxMjQ3MjEwM1%2FOtMyt5EPkvgR%2BkYdrZ71D&");
+    let body = $request.body.replace(regex, "username=anonymous%2FOtMyt5EPkvgRcxM%3AdjNjQ3MjEwM1fMT%dr2BkYZ71D&");
     // console.log("改完222 = " + body)
     regex = /password([\S\s]+?)[\&]/;
-    body = body.replace(regex, "password=fH5q55I7xGIH9ovJ&");
+    body = body.replace(regex, "password=GIHI7x9ofH5q55vJ&");
     // console.log("改完 = " + body)
     $done({body});
 
