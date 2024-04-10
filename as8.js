@@ -203,6 +203,7 @@ if (sync.test($request.url)) {
         // body["subscriber"]["entitlements"] = added["entitlements"]
         // obj = JSON.stringify(body)
         // console.log("body ===" +  body)
+    	console.log("修改A8成功!!!")
         obj.body = JSON.stringify(body)
     }
     $done(obj);
