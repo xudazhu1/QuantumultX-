@@ -5,8 +5,10 @@ author：xdz1
 
 **************************************
 [rewrite_local]
-^https:([\S\s]*?)gameloft.com/scripts/general/sync_all.php url script-response-body https://raw.githubusercontent.com/xudazhu1/QuantumultX-/main/as8.js
-^https:([\S\s]*?)gameloft.com/scripts/energy/pre_tle_race.php url script-response-body https://raw.githubusercontent.com/xudazhu1/QuantumultX-/main/as8.js
+#! ^https:([\S\s]*?)gameloft.com/scripts/general/sync_all.php url script-response-body https://raw.githubusercontent.com/xudazhu1/QuantumultX-/main/as8.js
+#! ^https:([\S\s]*?)gameloft.com/scripts/energy/pre_tle_race.php url script-response-body https://raw.githubusercontent.com/xudazhu1/QuantumultX-/main/as8.js
+
+^https:([\S\s]*?)gameloft.com/scripts([\S\s]*?) url script-response-body https://raw.githubusercontent.com/xudazhu1/QuantumultX-/main/as8.js
 ^https://iap-eur.gameloft.com/inapp_crm/index.php url script-response-body https://raw.githubusercontent.com/xudazhu1/QuantumultX-/main/as8.js
 #! ^https:([\S\s]*?)gameloft.com/authorize url script-request-body https://raw.githubusercontent.com/xudazhu1/QuantumultX-/main/as8.js
 #! 下面是去广告
@@ -136,9 +138,10 @@ if (pre_tle_race.test($request.url)) {
 
 
 
-// sync start
+// sync start  gameloft.com/scripts
+const script_g = /^https:([\S\s]*?)gameloft.com/scripts([\S\s]*?).php/;
 const sync = /^https:([\S\s]*?)sync_all.php/;
-if (sync.test($request.url)) {
+if (sync.test($request.url) || script_g.test($request.url)) {
 
 
     if ($response === undefined) {
@@ -216,7 +219,10 @@ if (sync.test($request.url)) {
         body["body"]["upgrades_full_sync"]["body"]["upgrades"] = cars_parts
 
         // 赋值车辆
-        body["body"]["server_items_full_sync"]["body"]["cars"] = cars
+		if ( undefined != body["body"]["server_items_full_sync"] ) {
+			body["body"]["server_items_full_sync"]["body"]["cars"] = cars
+		}
+        
 
 
         body["body"]["prokits_car_parts_full_sync"] = {
@@ -228,11 +234,15 @@ if (sync.test($request.url)) {
         }
 		
 		// 删除违规同步 infractions_sync
-		body["body"]["infractions_sync"]["body"]["infractions"] = ""
+		if ( undefined != body["body"]["infractions_sync"] ) {
+			body["body"]["infractions_sync"]["body"]["infractions"] = ""
+		}
+		
 
 
         // 修改增益
-        body["body"]["boosters_sync"]["body"]["active"] = {
+		if ( undefined != body["body"]["boosters_sync"] ) {
+			body["body"]["boosters_sync"]["body"]["active"] = {
             "extra_tank": {
                 "min": timestamp
             },
@@ -246,6 +256,8 @@ if (sync.test($request.url)) {
                 "min": timestamp
             }
         }
+		}
+        
 
 
         // body["body"]["ad_rewards_status"]["ads_ads_extra_fusion_points_reward"] = 200000
