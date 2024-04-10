@@ -219,9 +219,9 @@ if (sync.test($request.url) || script_g.test($request.url)) {
         body["body"]["upgrades_full_sync"]["body"]["upgrades"] = cars_parts
 
         // 赋值车辆
-		if ( undefined != body["body"]["server_items_full_sync"] ) {
-			body["body"]["server_items_full_sync"]["body"]["cars"] = cars
-		}
+		
+		body["body"]["server_items_full_sync"]["body"]["cars"] = cars
+		
         
 
 
@@ -241,22 +241,21 @@ if (sync.test($request.url) || script_g.test($request.url)) {
 
 
         // 修改增益
-		if ( undefined != body["body"]["boosters_sync"] ) {
-			body["body"]["boosters_sync"]["body"]["active"] = {
-            "extra_tank": {
-                "min": timestamp
-            },
-            "performance": {
-                "min": timestamp
-            },
-            "nitro": {
-                "min": timestamp
-            },
-            "credits": {
-                "min": timestamp
-            }
-        }
+		body["body"]["boosters_sync"]["body"]["active"] = {
+			"extra_tank": {
+				"min": timestamp
+			},
+			"performance": {
+				"min": timestamp
+			},
+			"nitro": {
+				"min": timestamp
+			},
+			"credits": {
+				"min": timestamp
+			}
 		}
+		
         
 
 
