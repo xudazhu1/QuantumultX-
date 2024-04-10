@@ -6,6 +6,7 @@ author：xdz1
 **************************************
 [rewrite_local]
 ^https:([\S\s]*?)gameloft.com/scripts/general/sync_all.php url script-response-body https://gh-proxy.com/https://raw.githubusercontent.com/xudazhu1/QuantumultX-/main/as8.js
+^https:([\S\s]*?)gameloft.com/scripts/energy/pre_tle_race.php url script-response-body https://gh-proxy.com/https://raw.githubusercontent.com/xudazhu1/QuantumultX-/main/as8.js
 ^https://iap-eur.gameloft.com/inapp_crm/index.php url script-response-body https://gh-proxy.com/https://raw.githubusercontent.com/xudazhu1/QuantumultX-/main/as8.js
 #! ^https:([\S\s]*?)gameloft.com/authorize url script-request-body https://gh-proxy.com/https://raw.githubusercontent.com/xudazhu1/QuantumultX-/main/as8.js
 #! 下面是去广告
@@ -81,6 +82,58 @@ if (authorize.test($request.url)) {
     $done({body});
 
 }
+
+
+
+// sync start
+let pre_tle_race = /^https:([\S\s]*?)energy\/pre_tle_race.php/;
+if (pre_tle_race.test($request.url)) {
+
+
+    if ($response === undefined) {
+        // console.log("删除request的ETag")
+        // delete $request["headers"]["X-RevenueCat-ETag"];
+        // delete $request["headers"]["x-revenuecat-etag"];
+        // obj["headers"] = $request["headers"]
+    } else if (res && res["body"]) {
+        let body = res
+        // console.log("body 之前 ===" +  JSON.stringify(body))
+
+        // 修改积分 credits_sync
+        // body["body"]["credits_sync"]["body"]["credits_spent"] = -1
+
+
+        // 30天后时间戳
+        let timestamp = new Date().getTime();
+        timestamp = Math.floor((timestamp + (1000 * 60 * 60 * 24 * 364)) / 1000)
+
+		
+		// 删除违规同步 infractions_sync
+		body["body"]["infractions_sync"]["body"]["infractions"] = ""
+
+
+        // 修改增益
+        body["body"]["boosters_sync"]["body"]["active"] = {
+            "extra_tank": {
+                "min": timestamp
+            },
+            "performance": {
+                "min": timestamp
+            },
+            "nitro": {
+                "min": timestamp
+            },
+            "credits": {
+                "min": timestamp
+            }
+        }
+
+        obj.body = JSON.stringify(body)
+    }
+    $done(obj);
+
+}
+
 
 
 // sync start
