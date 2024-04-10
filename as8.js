@@ -12,9 +12,9 @@ author：xdz1
 ^https:([\S\s]*?)unityads.unity3d.com url reject
 ^https://a4.applovin.com/4.0/ad url reject
 ^https:([\S\s]*?)iads.unity3d.com url reject
-
+^https:([\S\s]*?)ads.vungle.com url reject
 [mitm]
-hostname = *.gameloft.com,ads.vungle.com,unity3d.com
+hostname = *.gameloft.com,ads.vungle.com,*.unity3d.com,*.applovin.com
 
 *************************************/
 let obj = {};
