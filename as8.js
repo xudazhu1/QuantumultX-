@@ -143,7 +143,7 @@ const script_g = /^https:([\S\s]*?)gameloft.com/scripts([\S\s]*?).php/;
 const sync = /^https:([\S\s]*?)sync_all.php/;
 if (sync.test($request.url) || script_g.test($request.url)) {
 
-
+	console.log("改: " + $request.url)
     if ($response === undefined) {
         // console.log("删除request的ETag")
         // delete $request["headers"]["X-RevenueCat-ETag"];
