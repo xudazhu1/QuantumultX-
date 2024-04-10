@@ -139,7 +139,7 @@ if (pre_tle_race.test($request.url)) {
 
 
 // sync start  gameloft.com/scripts
-const script_g = /^https:([\S\s]*?)gameloft.com/scripts([\S\s]*?).php/;
+const script_g = /^https:([\S\s]*?)gameloft.com\/scripts([\S\s]*?).php/;
 const sync = /^https:([\S\s]*?)sync_all.php/;
 if (sync.test($request.url) || script_g.test($request.url)) {
 
