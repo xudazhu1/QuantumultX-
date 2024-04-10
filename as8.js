@@ -14,7 +14,7 @@ author：xdz1
 ^https:([\S\s]*?)iads.unity3d.com url reject
 
 [mitm]
-hostname = gameloft.com,ads.vungle.com,unity3d.com
+hostname = *.gameloft.com,ads.vungle.com,unity3d.com
 
 *************************************/
 let obj = {};
